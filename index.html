@@ -23,6 +23,10 @@
 </style>
 
 <style>
+.hero-header {
+    position: relative; /* the menu is up/mobile devices */
+}
+
 .hero-header h1,
 .hero-header p {
     opacity: 0;
@@ -84,11 +88,27 @@ nav a {
     padding: 8px 15px;
     border-radius: 5px;}
 
-nav a:hover {
-    color: #ffcc00;
-    transform: translateY(-2px);
-    background-color: rgba(255, 255, 255, 0.1);
-  }
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 0;
+        position: absolute; /* up/mobile */
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: transparent;
+        z-index: 9999; /* video is up */
+    }
+
+    nav a {
+        font-size: 0.7rem; /* correct text */
+        padding: 3px 6px; /* space */
+        width: auto;
+    }
+}
+
 </style>
 
     <!-- Fonts/Подключила шрифты:-->
@@ -183,16 +203,22 @@ nav a:hover {
   .fan4 { transform: translateX(30%) rotate(20deg); }
 
   @media (max-width: 600px) {
-    .fan-photo-wrapper {
-      height: 200px;
-    }
-
-    .fan-image {
-      width: 30%;
-      max-width: 160px;
-      left: 50%;
-    }
+  .fan-photo-wrapper {
+    height: 160px; /* ниже, чтобы вписывалось в экран */
   }
+
+  .fan-image {
+    width: 35%; /* уменьшаем ширину */
+    max-width: 120px;
+  }
+
+  /* немного корректируем позиции и углы */
+  .fan1 { transform: translateX(-105%) rotate(-15deg); }
+  .fan2 { transform: translateX(-60%) rotate(-5deg); }
+  .fan3 { transform: translateX(-20%) rotate(5deg); }
+  .fan4 { transform: translateX(25%) rotate(15deg); }
+}
+
 </style>
 </head>
 
@@ -495,11 +521,11 @@ nav a:hover {
   }
 </style>
 
-<div style="position: relative; width: 700px; margin: 40px auto; height: 300px;">
-  <img src="p6.jpg" class="fan-image" style="position: absolute; top: 0; left: 50%; transform: translateX(-120%) rotate(-20deg); width: 400px;">
-  <img src="p5.jpg" class="fan-image" style="position: absolute; top: 0; left: 50%; transform: translateX(-65%) rotate(-7deg); width: 400px;">
-  <img src="p4.jpg" class="fan-image" style="position: absolute; top: 0; left: 50%; transform: translateX(-15%) rotate(7deg); width: 400px;">
-  <img src="p7.jpg" class="fan-image" style="position: absolute; top: 0; left: 50%; transform: translateX(30%) rotate(20deg); width: 400px;">
+<div class="fan-photo-wrapper">
+  <img src="p6.jpg" class="fan-image fan1" alt="Fan photo 1">
+  <img src="p5.jpg" class="fan-image fan2" alt="Fan photo 2">
+  <img src="p4.jpg" class="fan-image fan3" alt="Fan photo 3">
+  <img src="p7.jpg" class="fan-image fan4" alt="Fan photo 4">
 </div>
 
 <section class="hero-section" style="width: 100%;">
